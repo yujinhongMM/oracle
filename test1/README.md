@@ -17,12 +17,12 @@ GROUP BY department_name;
 **查询2** 
 
 <table><tr><td  bgcolor=#7FFFD4>
-SELECT d.department_name，count(e.job_id)as "部门总人数"，
-avg(e.salary)as "平均工资"
-FROM hr.departments d，hr.employees e
-WHERE d.department_id = e.department_id
-GROUP BY department_name
-HAVING d.department_name in ('IT'，'Sales');
+SELECT d.department_name，count(e.job_id)as "部门总人数"，</br>
+avg(e.salary)as "平均工资"</br>
+FROM hr.departments d，hr.employees e</br>
+WHERE d.department_id = e.department_id</br>
+GROUP BY department_name</br>
+HAVING d.department_name in ('IT'，'Sales');</br>
 </td></tr></table> 
 
 ![4](https://github.com/yujinhongMM/oracle/blob/master/test1/QQ%E5%9B%BE%E7%89%8720181016192648.png)
