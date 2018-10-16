@@ -1,7 +1,7 @@
 # oracle
 **查询1** 
 
-<table><tr><td  bgcolor=#7FFFD4>
+<table><tr><td bgcolor=#7FFFD4>
 
 ```
 SELECT d.department_name，count(e.job_id)as "部门总人数"， 
@@ -20,15 +20,15 @@ GROUP BY department_name;
 
 **查询2** 
 
-<table><tr><td  bgcolor=#7FFFD4>
+<table><tr><td bgcolor=#7FFFD4>
   
 ```
-SELECT d.department_name，count(e.job_id)as "部门总人数"，</br>
-avg(e.salary)as "平均工资"</br>
-FROM hr.departments d，hr.employees e</br>
-WHERE d.department_id = e.department_id</br>
-GROUP BY department_name</br>
-HAVING d.department_name in ('IT'，'Sales');</br>
+SELECT d.department_name，count(e.job_id)as "部门总人数"， 
+avg(e.salary)as "平均工资"  
+FROM hr.departments d，hr.employees e  
+WHERE d.department_id = e.department_id  
+GROUP BY department_name  
+HAVING d.department_name in ('IT'，'Sales');  
 ```
 </td></tr></table> 
 
