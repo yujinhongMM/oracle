@@ -30,4 +30,6 @@ HAVING d.department_name in ('IT'，'Sales');
 ![6](https://github.com/yujinhongMM/oracle/blob/master/test1/QQ%E5%9B%BE%E7%89%8720181016192707.png)
 
 **你认为那个查询语句最优？**  
-  我认为查询语句1更优。
+<font color=#FF0000>  
+我认为查询语句1更优。
+<font>
