@@ -1,4 +1,8 @@
 # oracle
+
+**连接oracle** 
+![1](https://github.com/yujinhongMM/oracle/blob/master/test1/20181016233930.png) 
+
 **查询1** 
 
 ```
