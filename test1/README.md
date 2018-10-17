@@ -1,6 +1,6 @@
 # oracle
-# 所要用到的查询语句
-**查询1** 
+# 1、所要用到的查询语句
+**（1）查询1** 
 
 ```
 SELECT d.department_name，count(e.job_id)as "部门总人数"， 
@@ -10,7 +10,7 @@ where d.department_id = e.department_id
 and d.department_name in ('IT'，'Sales')  
 GROUP BY department_name; 
 ```
-**查询2** 
+**（2）查询2** 
  
 ```
 SELECT d.department_name，count(e.job_id)as "部门总人数"， 
@@ -21,12 +21,13 @@ GROUP BY department_name
 HAVING d.department_name in ('IT'，'Sales');  
 ``` 
 
-# （1）sqlplus 
-## 连接
-![1](https://github.com/yujinhongMM/oracle/blob/master/test1/20181016233930.png) 
-
-
-![1](https://github.com/yujinhongMM/oracle/blob/master/test1/20181016233930.png) 
+# 2、sqlplus 
+## （1）连接
+![1](https://github.com/yujinhongMM/oracle/blob/master/test1/1.png) 
+## （2）查询1
+![1](https://github.com/yujinhongMM/oracle/blob/master/test1/2.png) 
+## （3）查询2
+![1](https://github.com/yujinhongMM/oracle/blob/master/test1/3.png) 
 
 **查询1** 
 
