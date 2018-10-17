@@ -1,6 +1,6 @@
 # oracle
 # 1.所要用到的查询语句
-**1.1查询1** 
+## 1.1查询1
 
 ```
 SELECT d.department_name，count(e.job_id)as "部门总人数"， 
@@ -10,7 +10,7 @@ where d.department_id = e.department_id
 and d.department_name in ('IT'，'Sales')  
 GROUP BY department_name; 
 ```
-**1.2查询2** 
+## 1.2查询2 
  
 ```
 SELECT d.department_name，count(e.job_id)as "部门总人数"， 
@@ -43,5 +43,5 @@ HAVING d.department_name in ('IT'，'Sales');
 ![5](https://github.com/yujinhongMM/oracle/blob/master/test1/QQ%E5%9B%BE%E7%89%8720181016192658.png)
 ![6](https://github.com/yujinhongMM/oracle/blob/master/test1/QQ%E5%9B%BE%E7%89%8720181016192707.png)
 
-**你认为那个查询语句最优？**  
-<font color=#0099ff size=7 face="黑体">我认为查询语句1更优。</font>
+# 4.你认为那个查询语句最优？**  
+ <font color=#0099ff size=7 face="黑体"> 我认为查询语句2更优。 </font>
