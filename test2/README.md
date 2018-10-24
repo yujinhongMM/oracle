@@ -49,7 +49,16 @@ Grant succeeded.
 SQL>exit
 ```
 ![4](https://github.com/yujinhongMM/oracle/blob/master/test2/4.png) 
-### 第4步：用户hr连接到pdborcl，查询new_user授予它的视图myview
+### 第4步：用户hr连接到pdborcl，查询new_user0授予它的视图myview
+```sql
+$ sqlplus hr/123@pdborcl
+SQL> SELECT * FROM new_user.myview;
+NAME
+--------------------------------------------------
+zhang
+wang
+SQL> exit
+```
 ![5](https://github.com/yujinhongMM/oracle/blob/master/test2/5.png)
 ## 二、查看数据库的使用情况
 以下样例查看表空间的数据库文件，以及每个文件的磁盘占用情况。
