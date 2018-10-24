@@ -1,5 +1,6 @@
 # oracle实验二
-## 第1步：连接到服务器
+## 实验步骤
+### 第1步：连接到服务器
  
 ```sql
 $ ssh oracle@202.115.82.8
@@ -7,7 +8,7 @@ oracle@202.115.82.8's password:
 [oracle@deep02 ~]$
 ```
 ![1](https://github.com/yujinhongMM/oracle/blob/master/test2/1.png) 
-## 第2步：以system登录到pdborcl，创建角色con_res_view0和用户new_user0，并授权和分配空间：
+### 第2步：以system登录到pdborcl，创建角色con_res_view0和用户new_user0，并授权和分配空间：
  
 ```sql
 $ sqlplus system/123@pdborcl
@@ -25,7 +26,7 @@ SQL> exit
 ```
 ![2](https://github.com/yujinhongMM/oracle/blob/master/test2/2.png) 
 ![3](https://github.com/yujinhongMM/oracle/blob/master/test2/3.png) 
-## 第3步：新用户new_user0连接到pdborcl，创建表mytable和视图myview，插入数据，最后将myview的SELECT对象权限授予hr用户。
+### 第3步：新用户new_user0连接到pdborcl，创建表mytable和视图myview，插入数据，最后将myview的SELECT对象权限授予hr用户。
 ```sql
 sqlplus new_user0/123@pdborcl
 SQL> show user;
@@ -47,8 +48,12 @@ SQL> GRANT SELECT ON myview TO hr;
 Grant succeeded.
 SQL>exit
 ```
-![2](https://github.com/yujinhongMM/oracle/blob/master/test2/4.png) 
-
+![4](https://github.com/yujinhongMM/oracle/blob/master/test2/4.png) 
+### 第4步：用户hr连接到pdborcl，查询new_user授予它的视图myview
+![5](https://github.com/yujinhongMM/oracle/blob/master/test2/5.png)
+## 查看数据库的使用情况
+![6](https://github.com/yujinhongMM/oracle/blob/master/test2/6.png)
+![7](https://github.com/yujinhongMM/oracle/blob/master/test2/7.png)
 
 
 
