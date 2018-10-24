@@ -8,7 +8,7 @@ oracle@202.115.82.8's password:
 [oracle@deep02 ~]$
 ```
 ![1](https://github.com/yujinhongMM/oracle/blob/master/test2/1.png) 
-### 第2步：以system登录到pdborcl，创建角色con_res_view0和用户new_user0，并授权和分配空间：
+### 第2步：以system登录到pdborcl，创建角色*con_res_view0*和用户*new_user0*，并授权和分配空间：
  
 ```sql
 $ sqlplus system/123@pdborcl
