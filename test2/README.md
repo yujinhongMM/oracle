@@ -57,10 +57,13 @@ SQL>exit
 ## 三、实验参考
 Oracle地址：202.115.82.8 用户名：system,hr,new_user ， 密码123， 数据库名称：pdborcl，端口号：1521 
 SQL-DEVELOPER修改用户的操作界面：
+
 ![8](https://github.com/yujinhongMM/oracle/blob/master/test2/8.png) 
 ![9](https://github.com/yujinhongMM/oracle/blob/master/test2/9.png)  
-![10](https://github.com/yujinhongMM/oracle/blob/master/test2/10.png)
+![10](https://github.com/yujinhongMM/oracle/blob/master/test2/10.png) 
+
 sqldeveloper授权对象的操作界面：
+
 ![11](https://github.com/yujinhongMM/oracle/blob/master/test2/11.png)  
 ![12](https://github.com/yujinhongMM/oracle/blob/master/test2/12.png)
 
