@@ -1,5 +1,5 @@
 # oracle实验二
-## 实验步骤
+## 一、实验步骤
 ### 第1步：连接到服务器
  
 ```sql
@@ -51,10 +51,17 @@ SQL>exit
 ![4](https://github.com/yujinhongMM/oracle/blob/master/test2/4.png) 
 ### 第4步：用户hr连接到pdborcl，查询new_user授予它的视图myview
 ![5](https://github.com/yujinhongMM/oracle/blob/master/test2/5.png)
-## 查看数据库的使用情况
+## 二、查看数据库的使用情况
 ![6](https://github.com/yujinhongMM/oracle/blob/master/test2/6.png)
 ![7](https://github.com/yujinhongMM/oracle/blob/master/test2/7.png)
-
-
+## 三、实验参考
+Oracle地址：202.115.82.8 用户名：system,hr,new_user ， 密码123， 数据库名称：pdborcl，端口号：1521 
+SQL-DEVELOPER修改用户的操作界面：
+![8](https://github.com/yujinhongMM/oracle/blob/master/test2/8.png) 
+![9](https://github.com/yujinhongMM/oracle/blob/master/test2/9.png)  
+![10](https://github.com/yujinhongMM/oracle/blob/master/test2/10.png)
+sqldeveloper授权对象的操作界面：
+![11](https://github.com/yujinhongMM/oracle/blob/master/test2/11.png)  
+![12](https://github.com/yujinhongMM/oracle/blob/master/test2/12.png)
 
 
