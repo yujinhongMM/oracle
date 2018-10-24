@@ -52,8 +52,25 @@ SQL>exit
 ### 第4步：用户hr连接到pdborcl，查询new_user授予它的视图myview
 ![5](https://github.com/yujinhongMM/oracle/blob/master/test2/5.png)
 ## 二、查看数据库的使用情况
+以下样例查看表空间的数据库文件，以及每个文件的磁盘占用情况。
+```sql
+sqlplus system/123@pdborcl
+SQL>SELECT tablespace_name,FILE_NAME,BYTES/1024/1024 MB,MAXBYTES/1024/1024 MAX_MB,autoextensible FROM dba_data_files  WHERE  tablespace_name='USERS';
+
+SQL>SELECT a.tablespace_name "表空间名",Total/1024/1024 "大小MB",
+ free/1024/1024 "剩余MB",( total - free )/1024/1024 "使用MB",
+ Round(( total - free )/ total,4)* 100 "使用率%"
+ from (SELECT tablespace_name,Sum(bytes)free
+        FROM   dba_free_space group  BY tablespace_name)a,
+       (SELECT tablespace_name,Sum(bytes)total FROM dba_data_files
+        group  BY tablespace_name)b
+ where  a.tablespace_name = b.tablespace_name;
+```
 ![6](https://github.com/yujinhongMM/oracle/blob/master/test2/6.png)
 ![7](https://github.com/yujinhongMM/oracle/blob/master/test2/7.png)
+autoextensible是显示表空间中的数据文件是否自动增加。 
+
+MAX_MB是指数据文件的最大容量。
 ## 三、实验参考
 Oracle地址：202.115.82.8 用户名：system,hr,new_user ， 密码123， 数据库名称：pdborcl，端口号：1521 
 SQL-DEVELOPER修改用户的操作界面：
