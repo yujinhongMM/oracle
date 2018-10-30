@@ -76,7 +76,8 @@ SQL>SELECT a.tablespace_name "表空间名",Total/1024/1024 "大小MB",
  where  a.tablespace_name = b.tablespace_name;
 ```
 ![6](https://github.com/yujinhongMM/oracle/blob/master/test2/6.png)
-![7](https://github.com/yujinhongMM/oracle/blob/master/test2/7.png)
+![7](https://github.com/yujinhongMM/oracle/blob/master/test2/7.png) 
+
 autoextensible是显示表空间中的数据文件是否自动增加。 
 
 MAX_MB是指数据文件的最大容量。
