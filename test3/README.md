@@ -1,3 +1,4 @@
+# oracle实验三
 ## 以system登录
 ### 创建表空间
 #### 创建表空间USERS
@@ -18,6 +19,7 @@ CREATE TABLESPACE users02 DATAFILE
   SIZE 100M AUTOEXTEND ON NEXT 50M MAXSIZE UNLIMITED 
 EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO;
 ```
+![1](https://github.com/yujinhongMM/oracle/blob/master/test3/1.png) 
 #### 创建表空间USERS03
 ```sql
 CREATE TABLESPACE users03 DATAFILE 
@@ -27,13 +29,14 @@ CREATE TABLESPACE users03 DATAFILE
   SIZE 100M AUTOEXTEND ON NEXT 50M MAXSIZE UNLIMITED 
 EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO;
 ```
-
+![1](https://github.com/yujinhongMM/oracle/blob/master/test3/2.png) 
 #### 给自己的账号分配USERS,USERS02,USERS03三个分区的使用权限
 ```sql
 ALTER USER C##new_user0 QUOTA 50M ON USERS;
 ALTER USER C##new_user0 QUOTA 50M ON USERS02;
 ALTER USER C##new_user0 QUOTA 50M ON USERS03;
 ```
+![1](https://github.com/yujinhongMM/oracle/blob/master/test3/3.png) 
 
 ## 以C##new_user0登录
 ### 在表空间中创建两张表：订单表(orders)与订单详表(order_details)
@@ -69,6 +72,7 @@ ALTER USER C##new_user0 QUOTA 50M ON USERS03;
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS02" ) ;
 ```
+![1](https://github.com/yujinhongMM/oracle/blob/master/test3/4.png) 
 #### 创建订单详表(order_details)
 ```sql
 CREATE TABLE order_details 
@@ -107,6 +111,7 @@ NOLOGGING
 TABLESPACE USERS02
 );
 ```
+![1](https://github.com/yujinhongMM/oracle/blob/master/test3/5.png) 
 #### 插入数据
 ```sql
 declare
@@ -134,6 +139,7 @@ end;
 ```sql
 SELECT tablespace_name,FILE_NAME,BYTES/1024/1024 MB,MAXBYTES/1024/1024 MAX_MB,autoextensible FROM dba_data_files  WHERE  tablespace_name='USERS';
 ```
+![1](https://github.com/yujinhongMM/oracle/blob/master/test3/6(1).png) 
 ```sql
 SELECT a.tablespace_name "表空间名",Total/1024/1024 "大小MB",
  free/1024/1024 "剩余MB",( total - free )/1024/1024 "使用MB",
@@ -144,6 +150,7 @@ SELECT a.tablespace_name "表空间名",Total/1024/1024 "大小MB",
         group  BY tablespace_name)b
  where  a.tablespace_name = b.tablespace_name;
  ```
+ ![1](https://github.com/yujinhongMM/oracle/blob/master/test3/7.png) 
 
 
 
