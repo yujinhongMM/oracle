@@ -107,6 +107,27 @@ NOLOGGING
 TABLESPACE USERS02
 );
 ```
+#### 插入数据
+```sql
+declare
+  maxnumber constant int:=10000;
+  i int :=1;
+  
+begin
+
+  for i in 1..maxnumber loop
+  
+    insert into orders(order_id, customer_name, customer_tel, order_date, employee_id, discount, trade_receivable)
+    values(i, '1', '1', '1', '1', '1', '1');
+    
+    insert into order_details (id, order_id, product_id, product_num, product_price, order_details_fk1)
+    values(i, '1', '1', '1', '1', '1');
+    
+  end loop;
+  commit;
+  
+end; 
+```
 ## 以system登录
 ### 查看数据库的使用情况
 #### 查看表空间的数据库文件，以及每个文件的磁盘占用情况
