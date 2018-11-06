@@ -1,3 +1,4 @@
+## 以system登录
 ### 创建表空间
 #### 创建表空间USERS
 ```sql
@@ -27,3 +28,7 @@ CREATE TABLESPACE users03 DATAFILE
 EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO;
 ```
 
+#### 给自己的账号分配USERS,USERS02,USERS0三个分区的使用权限
+```sql
+ALTER USER C##new_user0 QUOTA 50M ON USERS;
+```
