@@ -1,5 +1,5 @@
 # oracle实验三
-#### 自己电脑上安装的oracle用户*C##new_user0*，服务器上的用户为*new_user0*
+#### 自己电脑上安装的oracle用户*C##new_user0*，服务器上的用户为*new_user0*,实验步骤来自自己电脑上安装的oracle
 ## 以system登录
 ### 创建表空间
 #### 创建表空间USERS
