@@ -2,15 +2,6 @@
 #### 自己电脑上安装的oracle用户*C##new_user0*，服务器上的用户为*new_user0*,实验步骤来自自己电脑上安装的oracle
 ## 以system登录
 ### 创建表空间
-#### 创建表空间USERS
-```sql
-CREATE TABLESPACE users DATAFILE 
-'E:/oracle/app/oracle/oradata/orcl/pdborcl/pdbtest_users.dbf' 
-  SIZE 100M AUTOEXTEND ON NEXT 50M MAXSIZE UNLIMITED, 
-'E:/oracle/app/oracle/oradata/orcl/pdborcl/pdbtest_users.dbf'  
-  SIZE 100M AUTOEXTEND ON NEXT 50M MAXSIZE UNLIMITED 
-EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO;
-```
 #### 创建表空间USERS02
 ```sql
 CREATE TABLESPACE users02 DATAFILE 
