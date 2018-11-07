@@ -126,8 +126,8 @@ begin
     insert into orders(order_id, customer_name, customer_tel, order_date, employee_id, discount, trade_receivable)
     values(i, '1', '1', '1', '1', '1', '1');
     
-    insert into order_details (id, order_id, product_id, product_num, product_price, order_details_fk1)
-    values(i, '1', '1', '1', '1', '1');
+    insert into order_details (id, order_id, product_id, product_num, product_price)
+    values(i, '1', '1', '1', '1');
     
   end loop;
   commit;
