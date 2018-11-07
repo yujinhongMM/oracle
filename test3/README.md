@@ -1,4 +1,5 @@
 # oracle实验三
+自己电脑上安装的oracle用户*C##new_user0*，服务器上的用户为*new_user0*
 ## 以system登录
 ### 创建表空间
 #### 创建表空间USERS
@@ -151,6 +152,7 @@ SELECT a.tablespace_name "表空间名",Total/1024/1024 "大小MB",
  where  a.tablespace_name = b.tablespace_name;
  ```
  ![1](https://github.com/yujinhongMM/oracle/blob/master/test3/7.png) 
+
 
 
 
