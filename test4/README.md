@@ -4,14 +4,16 @@
 ## 以system登录
 ### 给*new_user0*创建视图权限
 ```sql
-grant create any view to new_user0;
+赋予new_user0用户创建视图的权限：GRANT CREATE VIEW TO new_user0;
+赋予new_user0可以查询任何表的权限：GRANT SELECT ANY TEBLE TO new_user0;
+赋予new_user0可以查询任何字典的权限：GRANT SELECT ANY DICTIONARY TO new_user0;
 ```
-## 以*new_user0*登录
-### 创建用户study
+![1](https://github.com/yujinhongMM/oracle/blob/master/test4/1.png) 
+## 创建用户study
 ```sql
 CREATE USER STUDY IDENTIFIED BY 123
-DEFAULT TABLESPACE "USERS"
-TEMPORARY TABLESPACE "TEMP";
+DEFAULT TABLESPACE USERS
+TEMPORARY TABLESPACE TEMP;
 
 -- QUOTAS
 ALTER USER STUDY QUOTA UNLIMITED ON USERS;
