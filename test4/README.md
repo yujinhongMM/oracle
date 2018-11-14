@@ -1,8 +1,6 @@
 # oracle
 # oracle实验四
 #### 用户名为 *new_user0*
-##### --删除表和序列
-##### --删除表的同时会一起删除主外键、触发器、程序包。
 ```sql
 --删除表和序列
 --删除表的同时会一起删除主外键、触发器、程序包。
@@ -60,5 +58,6 @@ begin
 end;
 /
 ```
+![1](https://github.com/yujinhongMM/oracle/blob/master/test3/1.png) 
 
 
