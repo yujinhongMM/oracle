@@ -39,6 +39,8 @@ begin
       values (v_order_id,v_name,v_tel,dt,V_EMPLOYEE_ID,dbms_random.value(100,0));
     --插入订单y一个订单包括3个产品
     v:=dbms_random.value(10000,4000);
+    insert /*+append*/ into ORDER_DETAILS(ID,ORDER_ID,PRODUCT_NAME,PRODUCT_NUM,PRODUCT_PRICE)
+      values (SEQ_ORDER_DETAILS_ID.NEXTVAL,v_order_id,v_name,4,v);
     v_name:='computer'|| (i mod 3 + 1);
     insert /*+append*/ into ORDER_DETAILS(ID,ORDER_ID,PRODUCT_NAME,PRODUCT_NUM,PRODUCT_PRICE)
       values (SEQ_ORDER_DETAILS_ID.NEXTVAL,v_order_id,v_name,2,v);
@@ -50,8 +52,6 @@ begin
     v_name:='phone'|| (i mod 3 + 1);
     insert /*+append*/ into ORDER_DETAILS(ID,ORDER_ID,PRODUCT_NAME,PRODUCT_NUM,PRODUCT_PRICE)
       values (SEQ_ORDER_DETAILS_ID.NEXTVAL,v_order_id,v_name,1,v);
-    insert /*+append*/ into ORDER_DETAILS(ID,ORDER_ID,PRODUCT_NAME,PRODUCT_NUM,PRODUCT_PRICE)
-      values (SEQ_ORDER_DETAILS_ID.NEXTVAL,v_order_id,v_name,4,v);
     --在触发器关闭的情况下，需要手工计算每个订单的应收金额：
     select sum(PRODUCT_NUM*PRODUCT_PRICE) into m from ORDER_DETAILS where ORDER_ID=v_order_id;
     if m is null then
