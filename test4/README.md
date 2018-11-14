@@ -67,5 +67,99 @@ begin
 end;
 /
 ```
+#### 3、至少有两个部门，每个部门至少有1个员工，其中只有一个人没有领导，一个领导至少有一个下属，并且它的下属是另一个人的领导（比如A领导B，B领导C）```sql
+INSERT INTO DEPARTMENTS(DEPARTMENT_ID,DEPARTMENT_NAME) values (1,'总经办');
+INSERT INTO EMPLOYEES(EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID)
+  VALUES (1,'李董事长',NULL,NULL,to_date('2010-1-1','yyyy-mm-dd'),50000,NULL,1);
+
+INSERT INTO DEPARTMENTS(DEPARTMENT_ID,DEPARTMENT_NAME) values (11,'销售部1');
+INSERT INTO EMPLOYEES(EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID)
+  VALUES (11,'张总',NULL,NULL,to_date('2010-1-1','yyyy-mm-dd'),50000,1,1);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID)
+  VALUES (111,'吴经理',NULL,NULL,to_date('2010-1-1','yyyy-mm-dd'),50000,11,11);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID)
+  VALUES (112,'白经理',NULL,NULL,to_date('2010-1-1','yyyy-mm-dd'),50000,11,11);
+
+INSERT INTO DEPARTMENTS(DEPARTMENT_ID,DEPARTMENT_NAME) values (12,'销售部2');
+INSERT INTO EMPLOYEES(EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID)
+  VALUES (12,'王总',NULL,NULL,to_date('2010-1-1','yyyy-mm-dd'),50000,1,1);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID)
+  VALUES (121,'赵经理',NULL,NULL,to_date('2010-1-1','yyyy-mm-dd'),50000,12,12);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID)
+  VALUES (122,'刘经理',NULL,NULL,to_date('2010-1-1','yyyy-mm-dd'),50000,12,12);```
+### 二、序列的应用
+
+#### *插入ORDERS和ORDER_DETAILS 两个表的数据时，主键ORDERS.ORDER_ID, ORDER_DETAILS.ID的值必须通过序列SEQ_ORDER_ID和SEQ_ORDER_ID取得，不能手工输入一个数字。*
+```sql
+CREATE INDEX ORDER_DETAILS_ORDER_ID ON ORDER_DETAILS (ORDER_ID)
+GLOBAL PARTITION BY HASH (ORDER_ID)
+(
+  PARTITION INDEX_PARTITION1 TABLESPACE USERS
+    NOCOMPRESS
+, PARTITION INDEX_PARTITION2 TABLESPACE USERS02
+    NOCOMPRESS
+);
+
+ALTER TABLE ORDER_DETAILS
+ADD CONSTRAINT ORDER_DETAILS_PRODUCT_NUM CHECK
+(Product_Num>0)
+ENABLE;
+```
+### 三、触发器的应用
+#### *维护ORDER_DETAILS的数据时（insert,delete,update）要同步更新ORDERS表订单应收货款ORDERS.Trade_Receivable的值。*
+```sql
+CREATE OR REPLACE EDITIONABLE TRIGGER "ORDERS_TRIG_ROW_LEVEL"
+BEFORE INSERT OR UPDATE OF DISCOUNT ON "ORDERS"
+FOR EACH ROW --行级触发器
+declare
+  m number(8,2);
+BEGIN
+  if inserting then
+       :new.TRADE_RECEIVABLE := - :new.discount;
+  else
+      select sum(PRODUCT_NUM*PRODUCT_PRICE) into m from ORDER_DETAILS where ORDER_ID=:old.ORDER_ID;
+      if m is null then
+        m:=0;
+      end if;
+      :new.TRADE_RECEIVABLE := m - :new.discount;
+  end if;
+END;
+/
+--批量插入订单数据之前，禁用触发器
+ALTER TRIGGER "ORDERS_TRIG_ROW_LEVEL" DISABLE;
+```
+### 四、查询数据
+#### 1.查询某个员工的信息
+```sql
+select * from ORDERS where  order_id=1;
+select * from ORDER_DETAILS where  order_id=1;
+select * from VIEW_ORDER_DETAILS where order_id=1;
+```
+#### 2.递归查询某个员工及其所有下属，子下属员工。
+```sql
+SELECT * FROM employees START WITH EMPLOYEE_ID = 11 CONNECT BY PRIOR EMPLOYEE_ID = MANAGER_ID;
+```
+#### 3.查询订单表，并且包括订单的订单应收货款: Trade_Receivable= sum(订单详单表.ProductNum*订单详单表.ProductPrice)- Discount。
+```sql
+
+```
+#### 4.查询订单详表，要求显示订单的客户名称和客户电话，产品类型用汉字描述。
+```sql
+
+```
+#### 5.查询出所有空订单，即没有订单详单的订单。
+```sql
+
+```
+#### 6.查询部门表，同时显示部门的负责人姓名。
+```sql
+
+```
+#### 7.查询部门表，统计每个部门的销售总金额。
+```sql
+
+```
+
+
 
 
