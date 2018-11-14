@@ -157,6 +157,13 @@ WHERE o.ORDER_ID=oe.ORDER_ID;
 ```
  ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-3.png) 
 
+#### 4.查询订单详表，要求显示订单的客户名称和客户电话，产品类型用汉字描述。
+```sql
+select d.CUSTOMER_NAME , d.CUSTOMER_TEL,e.PRODUCT_TYPE
+from ORDER_DETAILS m,ORDERS d,PRODUCTS e
+where m.ORDER_ID = d.ORDER_ID And m.PRODUCT_NAME=e.PRODUCT_NAME;
+```
+ ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-4.png) 
 
 
 
