@@ -164,6 +164,12 @@ from ORDER_DETAILS m,ORDERS d,PRODUCTS e
 where m.ORDER_ID = d.ORDER_ID And m.PRODUCT_NAME=e.PRODUCT_NAME;
 ```
  ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-4.png) 
-
+#### 5.查询出所有空订单，即没有订单详单的订单。
+```sql
+select *
+from ORDER_DETAILS m,ORDERS d
+where m.ORDER_ID <> m.ORDER_ID And m.ORDER_ID IS NULL;
+```
+ ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-5.png) 
 
 
