@@ -151,12 +151,6 @@ SELECT SUM(oe.PRODUCT_NUM*oe.PRODUCT_PRICE - o.DISCOUNT) as Trade_Receivable
 from ORDER_DETAILS AS oe ,ORDERS AS o 
 WHERE o.ORDER_ID=oe.ORDER_ID; 
 ```
- ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/1.png) 
-  ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/2.png) 
-   ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/3.png) 
-    ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4.png) 
-     ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/5.png) 
-      ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/6.png) 
 
 
 
