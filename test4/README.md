@@ -65,6 +65,7 @@ begin
 end;
 /
 ```
+ ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/5.png) 
 #### 3、至少有两个部门，每个部门至少有1个员工，其中只有一个人没有领导，一个领导至少有一个下属，并且它的下属是另一个人的领导（比如A领导B，B领导C）
 ```sql
 INSERT INTO DEPARTMENTS(DEPARTMENT_ID,DEPARTMENT_NAME) values (1,'总经办');
