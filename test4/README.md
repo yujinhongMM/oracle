@@ -133,6 +133,7 @@ ALTER TRIGGER "ORDERS_TRIG_ROW_LEVEL" DISABLE;
 ```sql
 select * from EMPLOYEES where EMPLOYEE_ID='12';
 ```
+ ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-1.png) 
 #### 2.递归查询某个员工及其所有下属，子下属员工。
 ```sql
 WITH A (EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID) AS
@@ -143,13 +144,19 @@ WITH A (EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTME
     FROM A, employees B WHERE A.EMPLOYEE_ID = B.MANAGER_ID)
 SELECT * FROM A;
 ```
+ ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-2.png) 
 #### 3.查询订单表，并且包括订单的订单应收货款: Trade_Receivable= sum(订单详单表.ProductNum*订单详单表.ProductPrice)- Discount。
 ```sql
 SELECT SUM(oe.PRODUCT_NUM*oe.PRODUCT_PRICE - o.DISCOUNT) as Trade_Receivable 
 from ORDER_DETAILS AS oe ,ORDERS AS o 
 WHERE o.ORDER_ID=oe.ORDER_ID; 
 ```
-
+ ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/1.png) 
+  ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/2.png) 
+   ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/3.png) 
+    ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4.png) 
+     ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/5.png) 
+      ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/6.png) 
 
 
 
