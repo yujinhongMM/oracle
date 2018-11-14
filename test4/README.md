@@ -1,8 +1,8 @@
 # oracle
 # oracle实验四
 ## 用户名为 *new_user0*
-### 录入数据
-#### 在MYTABLE中插入
+### 一、录入数据
+#### 1、在MYTABLE中插入
 |ID|NAME|
 |---|---|
 |3|yujinhong|
