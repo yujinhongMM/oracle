@@ -65,7 +65,6 @@ begin
 end;
 /
 ```
- ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/5.png) 
 #### 3、至少有两个部门，每个部门至少有1个员工，其中只有一个人没有领导，一个领导至少有一个下属，并且它的下属是另一个人的领导（比如A领导B，B领导C）
 ```sql
 INSERT INTO DEPARTMENTS(DEPARTMENT_ID,DEPARTMENT_NAME) values (1,'总经办');
@@ -148,10 +147,11 @@ SELECT * FROM A;
  ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-2.png) 
 #### 3.查询订单表，并且包括订单的订单应收货款: Trade_Receivable= sum(订单详单表.ProductNum*订单详单表.ProductPrice)- Discount。
 ```sql
-SELECT SUM(oe.PRODUCT_NUM*oe.PRODUCT_PRICE - o.DISCOUNT) as Trade_Receivable 
-from ORDER_DETAILS AS oe ,ORDERS AS o 
+SELECT SUM(oe.PRODUCT_NUM*oe.PRODUCT_PRICE - o.DISCOUNT) 
+Trade_Receivable from ORDER_DETAILS oe ,ORDERS o 
 WHERE o.ORDER_ID=oe.ORDER_ID; 
 ```
+ ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-3.png) 
 
 
 
