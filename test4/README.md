@@ -11,8 +11,6 @@ INSERT INTO "NEW_USER0"."MYTABLE" (ID, NAME) VALUES ('3', 'yujinhong');
 ```
 #### 2、插入1万个订单，每个订单至少有4个详单。
 ```sql
---批量插入订单数据，注意ORDERS.TRADE_RECEIVABLE（订单应收款）的自动计算,注意插入数据的速度
---2千万条记录，插入的时间是：18100秒（约5小时）
 declare
   dt date;
   m number(8,2);
@@ -52,6 +50,8 @@ begin
     v_name:='phone'|| (i mod 3 + 1);
     insert /*+append*/ into ORDER_DETAILS(ID,ORDER_ID,PRODUCT_NAME,PRODUCT_NUM,PRODUCT_PRICE)
       values (SEQ_ORDER_DETAILS_ID.NEXTVAL,v_order_id,v_name,1,v);
+    insert /*+append*/ into ORDER_DETAILS(ID,ORDER_ID,PRODUCT_NAME,PRODUCT_NUM,PRODUCT_PRICE)
+      values (SEQ_ORDER_DETAILS_ID.NEXTVAL,v_order_id,v_name,4,v);
     --在触发器关闭的情况下，需要手工计算每个订单的应收金额：
     select sum(PRODUCT_NUM*PRODUCT_PRICE) into m from ORDER_DETAILS where ORDER_ID=v_order_id;
     if m is null then
