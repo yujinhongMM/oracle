@@ -172,4 +172,10 @@ where m.ORDER_ID <> m.ORDER_ID And m.ORDER_ID IS NULL;
 ```
  ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-5.png) 
 
-
+#### 6.查询部门表，同时显示部门的负责人姓名。
+```sql
+select m.DEPARTMENT_ID, m.DEPARTMENT_NAME,d.NAME
+from DEPARTMENTS m,EMPLOYEES d
+where m.DEPARTMENT_ID=d.DEPARTMENT_ID AND d.MANAGER_ID IS NULL;
+```
+ ![1](https://github.com/yujinhongMM/oracle/blob/master/test4/4-6.png) 
