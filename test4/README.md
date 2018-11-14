@@ -39,8 +39,6 @@ begin
       values (v_order_id,v_name,v_tel,dt,V_EMPLOYEE_ID,dbms_random.value(100,0));
     --插入订单y一个订单包括3个产品
     v:=dbms_random.value(10000,4000);
-    insert /*+append*/ into ORDER_DETAILS(ID,ORDER_ID,PRODUCT_NAME,PRODUCT_NUM,PRODUCT_PRICE)
-      values (SEQ_ORDER_DETAILS_ID.NEXTVAL,v_order_id,v_name,4,v);
     v_name:='computer'|| (i mod 3 + 1);
     insert /*+append*/ into ORDER_DETAILS(ID,ORDER_ID,PRODUCT_NAME,PRODUCT_NUM,PRODUCT_PRICE)
       values (SEQ_ORDER_DETAILS_ID.NEXTVAL,v_order_id,v_name,2,v);
@@ -133,32 +131,25 @@ ALTER TRIGGER "ORDERS_TRIG_ROW_LEVEL" DISABLE;
 ### 四、查询数据
 #### 1.查询某个员工的信息
 ```sql
-
+select * from EMPLOYEES where EMPLOYEE_ID='12';
 ```
 #### 2.递归查询某个员工及其所有下属，子下属员工。
 ```sql
-SELECT * FROM employees START WITH EMPLOYEE_ID = 11 CONNECT BY PRIOR EMPLOYEE_ID = MANAGER_ID;
+WITH A (EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID) AS
+  (SELECT EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID
+    FROM employees WHERE employee_ID = 11
+    UNION ALL
+  SELECT B.EMPLOYEE_ID,B.NAME,B.EMAIL,B.PHONE_NUMBER,B.HIRE_DATE,B.SALARY,B.MANAGER_ID,B.DEPARTMENT_ID
+    FROM A, employees B WHERE A.EMPLOYEE_ID = B.MANAGER_ID)
+SELECT * FROM A;
 ```
 #### 3.查询订单表，并且包括订单的订单应收货款: Trade_Receivable= sum(订单详单表.ProductNum*订单详单表.ProductPrice)- Discount。
 ```sql
-
+SELECT SUM(oe.PRODUCT_NUM*oe.PRODUCT_PRICE - o.DISCOUNT) as Trade_Receivable 
+from ORDER_DETAILS AS oe ,ORDERS AS o 
+WHERE o.ORDER_ID=oe.ORDER_ID; 
 ```
-#### 4.查询订单详表，要求显示订单的客户名称和客户电话，产品类型用汉字描述。
-```sql
 
-```
-#### 5.查询出所有空订单，即没有订单详单的订单。
-```sql
-
-```
-#### 6.查询部门表，同时显示部门的负责人姓名。
-```sql
-
-```
-#### 7.查询部门表，统计每个部门的销售总金额。
-```sql
-
-```
 
 
 
