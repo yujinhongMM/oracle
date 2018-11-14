@@ -131,9 +131,7 @@ ALTER TRIGGER "ORDERS_TRIG_ROW_LEVEL" DISABLE;
 ### 四、查询数据
 #### 1.查询某个员工的信息
 ```sql
-select * from ORDERS where  order_id=1;
-select * from ORDER_DETAILS where  order_id=1;
-select * from VIEW_ORDER_DETAILS where order_id=1;
+
 ```
 #### 2.递归查询某个员工及其所有下属，子下属员工。
 ```sql
