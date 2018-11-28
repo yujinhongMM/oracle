@@ -45,7 +45,7 @@ END MyPack;
 select count(*) from orders;
 select MyPack.Get_SaleAmount(11) AS 部门11应收金额,MyPack.Get_SaleAmount(12) AS 部门12应收金额 from dual;
 ```
-![1](https://github.com/yujinhongMM/oracle/blob/master/test5/%7B%604IU~LWS%25%25J)W%5B5VJ(Z6LY.png) 
+![1]("https://github.com/yujinhongMM/oracle/blob/master/test5/%7B%604IU~LWS%25%25J)W%5B5VJ(Z6LY.png") 
 ```sql
 过程Get_Employees()测试代码：
 set serveroutput on
@@ -58,6 +58,6 @@ BEGIN
   MYPACK.Get_Employees (  V_EMPLOYEE_ID => V_EMPLOYEE_ID) ;    
 END;
 ```
-![1](https://github.com/yujinhongMM/oracle/blob/master/test5/CQB111UZ%25V(%40SANR9M01J4N.png) 
+![1]("https://github.com/yujinhongMM/oracle/blob/master/test5/CQB111UZ%25V(%40SANR9M01J4N.png") 
 
 ### 6、由于订单只是按日期分区的，上述统计是全表搜索，因此统计速度会比较慢，如何提高统计的速度呢？
