@@ -2,7 +2,7 @@
 # 1.所要用到的查询语句
 ## 1.1查询1
 
-```
+```sql
 SELECT d.department_name，count(e.job_id)as "部门总人数"， 
 avg(e.salary)as "平均工资"  
 from hr.departments d，hr.employees e  
@@ -12,7 +12,7 @@ GROUP BY department_name;
 ```
 ## 1.2查询2 
  
-```
+```sql
 SELECT d.department_name，count(e.job_id)as "部门总人数"， 
 avg(e.salary)as "平均工资"  
 FROM hr.departments d，hr.employees e  
@@ -45,3 +45,16 @@ HAVING d.department_name in ('IT'，'Sales');
 
 # 4.你认为那个查询语句最优？  
  <font color=#0099ff size=7 face="黑体"> 我认为查询语句1更优。 </font>
+ 创建索引后
+```
+CREATE NONCLUSTERED INDEX IX_TEST_TNAME
+ON TEST(hr.departments d，hr.employees e)
+WITH FILLFACTOR = 30
+GO
+SELECT d.department_name，count(e.job_id)as "部门总人数"，
+avg(e.salary)as "平均工资"
+from TEST(hr.departments d，hr.employees e)
+where d.department_id = e.department_id
+and d.department_name in ('IT'，'Sales')
+GROUP BY department_name; 
+``` 
