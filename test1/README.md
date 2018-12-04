@@ -46,7 +46,7 @@ HAVING d.department_name in ('IT'，'Sales');
 # 4.你认为那个查询语句最优？  
  <font color=#0099ff size=7 face="黑体"> 我认为查询语句1更优。 </font>
  创建索引后
-```
+```sql
 CREATE NONCLUSTERED INDEX IX_TEST_TNAME
 ON TEST(hr.departments d，hr.employees e)
 WITH FILLFACTOR = 30
